@@ -15,6 +15,7 @@ import json
 import logging
 import time
 from contextlib import asynccontextmanager
+from pathlib import Path
 
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.responses import HTMLResponse, JSONResponse
@@ -64,7 +65,7 @@ app = FastAPI(
 )
 
 # Jinja2 for the admin template
-jinja_env = Environment(loader=FileSystemLoader("templates"), autoescape=True)
+jinja_env = Environment(loader=FileSystemLoader(str(Path(__file__).parent / "templates")), autoescape=True)
 
 # Track which message timestamps we've already processed (dedup)
 _seen_events: set[str] = set()

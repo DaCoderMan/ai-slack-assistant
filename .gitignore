@@ -1,1 +1,9 @@
 __pycache__/
+*.pyc
+.env
+data/conversations/
+data/vault/
+venv/
+.venv/
+.idea/
+.vscode/

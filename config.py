@@ -7,7 +7,14 @@ from __future__ import annotations
 
 import os
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import Optional
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
+BASE_DIR = Path(__file__).parent
 
 
 @dataclass(frozen=True)
@@ -31,8 +38,8 @@ class Settings:
     smtp_password: str = ""
 
     # --- Paths ---
-    vault_dir: str = "data/vault"
-    conversation_dir: str = "data/conversations"
+    vault_dir: str = str(BASE_DIR / "data" / "vault")
+    conversation_dir: str = str(BASE_DIR / "data" / "conversations")
 
     # --- Agent ---
     agent_max_steps: int = 8
